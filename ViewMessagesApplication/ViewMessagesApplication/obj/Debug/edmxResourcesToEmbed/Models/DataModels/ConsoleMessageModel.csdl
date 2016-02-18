@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="contactsdatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ConsoleMessage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Tid" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="contactsdatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ConsoleMessages" EntityType="Self.ConsoleMessage" />
+    <FunctionImport Name="GetConsoleMessage" ReturnType="Collection(contactsdatabaseModel.GetConsoleMessage_Result)" />
+  </EntityContainer>
+  <ComplexType Name="GetConsoleMessage_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="true" MaxLength="1000" />
+    <Property Type="DateTime" Name="Tid" Nullable="true" Precision="16" />
+  </ComplexType>
+</Schema>
